@@ -1,0 +1,39 @@
+
+{
+  "manifest_version": 2,
+
+  "name": "Emailextension",
+  "description": "This extension finds name and company name from LinkedIn",
+  "version": "1.0",
+  "icons": {
+    "128": "icon128.png",
+    "48": "icon48.png",
+    "16": "icon16.png"
+  },
+
+  "browser_action": {
+    "default_icon": "icon16.png",
+    "default_popup": "popup.html",
+    "default_title": "Email extension"
+  },
+
+  "background": {
+    "scripts": ["eventPage.js"],
+    "persistent": false
+  },
+
+  "content_scripts":[
+    {
+      "matches": ["https://www.linkedin.com/*","https://linkedin.com/*"],
+      "js": ["jquery-3.5.1.min.js","content.js"]
+      
+    }
+  ],
+  
+  "permissions": [
+    "storage",
+    "tabs",
+    "https://www.linkedin.com/*"
+        ],
+    "content_security_policy": "script-src 'self' https://code.jquery.com; object-src 'self'"
+}
